@@ -1,0 +1,5 @@
+# 千帆语言模型apiKey
+API_KEY=
+SECRET_KEY=
+# vosk模型地址
+VOSK_MODEL_PATH=E:\\vosk-model-cn-0.22

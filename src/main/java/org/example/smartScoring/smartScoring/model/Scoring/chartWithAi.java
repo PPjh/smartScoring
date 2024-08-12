@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 public class chartWithAi {
-    private static final ResourceBundle bundle = ResourceBundle.getBundle("properties.chatOnly");
+    private static final ResourceBundle bundle = ResourceBundle.getBundle("properties.javaModel");
     private static String API_KEY = bundle.getString("API_KEY");
     private static String SECRET_KEY = bundle.getString("SECRET_KEY");
 

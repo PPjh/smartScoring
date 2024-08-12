@@ -5,6 +5,7 @@ import org.vosk.LogLevel;
 import org.vosk.Model;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * vosk模型加载
@@ -20,6 +21,8 @@ public class VoskModel {
      */
     private static volatile VoskModel instance;
 
+    private static final ResourceBundle bundle = ResourceBundle.getBundle("properties.javaModel");
+
     private Model voskModel;
 
     public Model getVoskModel() {
@@ -31,10 +34,8 @@ public class VoskModel {
      */
     private VoskModel() {
         System.out.println("SingleLazyPattern实例化了");
-        // windows
-         String modelStr = "E:\\vosk-model-cn-0.22";
-        // linux
-//        String modelStr = "/root/model/vosk-model-cn-0.22";
+
+         String modelStr = bundle.getString("VOSK_MODEL_PATH");
         try {
             voskModel = new Model(modelStr);
             LibVosk.setLogLevel(LogLevel.INFO);
