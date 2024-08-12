@@ -7,8 +7,8 @@
 
 请按照以下步骤进行配置：
 
-1. 将 `resource` 目录中的 `example-properties` 文件修改为 `properties`。
-2. 将目录下的 `javaModel.properties.example` 修改为 `javaModel.properties`，并更新为您自己的模型。
+1. 将 `resource` 目录中的 `example-properties` 目录修改为 `properties`。
+2. 将目录下的 `javaModel.properties.example` 文件修改为 `javaModel.properties`，并更新为您自己的模型配置。
 
 ### 模型获取地址
 
