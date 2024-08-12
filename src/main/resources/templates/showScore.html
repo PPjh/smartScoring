@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字内容及评分展示</title>
+    <link rel="stylesheet" href="/css/showStyles.css">
+</head>
+<body>
+<div class="container">
+    <h1>文字内容及评分展示</h1>
+    <form method="GET" action="/show" id="fetchForm">
+        <button type="button" onclick="fetchTexts()">显示内容</button>
+    </form>
+    <div id="result" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+    function fetchTexts() {
+        fetch('/show')
+            .then(response => response.json())
+            .then(data => {
+                displayResult(data.leftTexts, data.rightTexts);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function displayResult(leftTexts, rightTexts) {
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = ''; // 清空当前内容
+
+        const container = document.createElement('div');
+        container.className = 'result-container';
+
+        // 将每对字符串显示在相应的div中
+        for (let i = 0; i < Math.max(leftTexts.length, rightTexts.length); i++) {
+            const wordPairDiv = document.createElement('div');
+            wordPairDiv.className = 'pair-container';
+
+            const leftElement = document.createElement('div');
+            leftElement.className = 'left';
+            leftElement.textContent = leftTexts[i] || '';
+            wordPairDiv.appendChild(leftElement);
+
+            const rightElement = document.createElement('div');
+            rightElement.className = 'right';
+            rightElement.textContent = rightTexts[i] || '';
+            wordPairDiv.appendChild(rightElement);
+
+            container.appendChild(wordPairDiv);
+        }
+
+        resultDiv.appendChild(container);
+    }
+</script>
+</body>
+</html>
